@@ -63,3 +63,9 @@ function handleWindowControls() {
         }
     }
 }
+
+aTags = document.getElementsByTagName("a");
+for (var i = 0; i < aTags.length; i++) {
+  aTags[i].setAttribute("onclick","require('shell').openExternal('" + aTags[i].href + "')");
+  aTags[i].href = "#";
+}

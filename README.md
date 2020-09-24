@@ -13,6 +13,8 @@ Features:
 
 - Stick to screen mode
 
+![](public/example.gif)
+
 ## Project setup
 ```
 npm install
@@ -28,15 +30,7 @@ npm run electron:serve
 npm run electron:build
 ```
 
-### Run the node server
+### Run the node server (currently needed for PGP)
 ```
 node server/main.js
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

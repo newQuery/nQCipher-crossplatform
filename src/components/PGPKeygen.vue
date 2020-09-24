@@ -19,7 +19,7 @@
           <label>Passphrase (password)</label>
           <el-input
             placeholder="Passphrase (password)"
-            v-model="passphrase">
+            v-model="passphrase" show-password>
           </el-input>
         </div>
         <div class="group">

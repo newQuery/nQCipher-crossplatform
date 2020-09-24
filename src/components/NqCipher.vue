@@ -2,9 +2,25 @@
   <div class="hello">
     <h1>Welcome to nQCipher Community !</h1>
     <p>
-        This application aims to help you staying anonymous. Keeping your datas as private as possible.<br>
-        Love from newQuery
+        This application aims to help you staying anonymous. Keeping your datas as private as possible.
     </p>
+    <p>
+      You can listen to Philip Zimmermann song called "PGP" as much as you want !
+    </p>
+    <div class="music-player">
+      <audio
+        ref="audio"
+        src="https://philzimmermann.com/multimedia/PGP.mp3"
+        preload
+        controls
+        loop
+        id="audio"
+        muted
+      ></audio>
+      <p>
+        <small>Source: <a href="https://philzimmermann.com/multimedia/PGP.mp3">https://philzimmermann.com/</a></small>
+      </p>
+    </div>
     <h3>Links:</h3>
     <ul>
       <li>
