@@ -19,12 +19,12 @@ function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
     width: 800,
-    height: 960,
+    height: 600,
     frame: false,
     backgroundColor: '#FFF',
     webPreferences: {
         nodeIntegration: true,
-        devTools: true
+        devTools: false
     }
 });
  

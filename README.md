@@ -1,4 +1,17 @@
-# Electron + Vue Ready
+# nQcipher Community
+
+## What is it ?
+nQCipher is an Electron & Node JS crossplatform application.
+
+Features:
+
+- Encode & decode a sting with AES-256-CTR algorithm
+
+- Encode & decode PGP (Pretty Good Privacy)
+
+- Generate Public & Private PGP keys
+
+- Stick to screen mode
 
 ## Project setup
 ```

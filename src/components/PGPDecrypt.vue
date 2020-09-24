@@ -29,15 +29,17 @@
           <el-button @click="decryptPgp()" type="primary">Decrypt</el-button>
         </div>
 
-        <div class="group" v-if="decrypted != ''">
-          <label>Decrypted message</label>
-          <el-input
-            type="textarea"
-            placeholder="Decrypted message"
-            :rows="6"
-            v-model="decrypted">
-          </el-input>
-        </div>
+        <transition name="el-zoom-in-center">
+          <div class="group" v-if="decrypted != ''">
+            <label>Decrypted message</label>
+            <el-input
+              type="textarea"
+              placeholder="Decrypted message"
+              :rows="6"
+              v-model="decrypted">
+            </el-input>
+          </div>
+        </transition>
     </div>
 </template>
 

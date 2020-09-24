@@ -7,15 +7,29 @@ body {
   font-family: "Segoe UI", sans-serif;
   background: #1A2933;
   color: #FFF;
+  overflow-y: scroll;
 }
 h1 {margin: 0 0 10px 0; font-weight: 600; line-height: 1.2;}
 p {margin-top: 10px; color: rgba(255,255,255,0.4);}
 
 body {
   border: 1px solid #48545c;
-  overflow-y: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 2px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+::-webkit-scrollbar-thumb {
+  background: #3c4ca5;
 }
 
+
+header {
+  z-index: 1000;
+}
 
 #titlebar {
   padding: 4px;

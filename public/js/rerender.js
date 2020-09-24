@@ -1,5 +1,5 @@
 const remote = require('electron').remote;
-
+const shell = require('electron').shell;
 const win = remote.getCurrentWindow(); /* Note this is different to the
 html global `window` variable */
 
@@ -7,6 +7,17 @@ html global `window` variable */
 document.onreadystatechange = (event) => {
     if (document.readyState == "complete") {
         handleWindowControls();
+        var links = document.querySelectorAll('a[href]');
+        //repetition of code I pasted eariler:
+        links.forEach((link) => {
+            const url = link.getAttribute('href')
+            if (url.indexOf('http') === 0) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault()
+                    shell.openExternal(url)
+                })
+            }
+        })
     }
 };
 

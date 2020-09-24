@@ -8,13 +8,7 @@
         <StringEncode />
       </el-tab-pane>
       <el-tab-pane label="PGP encode">
-        <PGPEncrypt />
-      </el-tab-pane>
-      <el-tab-pane label="PGP decode">
-        <PGPDecrypt />
-      </el-tab-pane>
-      <el-tab-pane label="PGP keygen">
-        <PGPKeygen />
+        <PGP />
       </el-tab-pane>
       <el-tab-pane label="Settings">
         <div class="switch-button">
@@ -29,19 +23,15 @@
 
 <script>
 import StringEncode from './components/StringEncode'
-import PGPEncrypt from './components/PGPEncrypt'
-import PGPDecrypt from './components/PGPDecrypt'
-import PGPKeygen from './components/PGPKeygen'
 import NqCipher from './components/NqCipher'
+import PGP from './views/PGP'
 
 export default {
   name: 'App',
   components: {
     StringEncode,
-    PGPEncrypt,
-    PGPDecrypt,
-    PGPKeygen,
-    NqCipher
+    NqCipher,
+    PGP
   },
   data: function () {
     return {
@@ -69,7 +59,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 40px;
 }

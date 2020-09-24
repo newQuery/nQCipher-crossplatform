@@ -20,13 +20,15 @@
           <el-button @click="decryptString()" type="warning">Decrypt</el-button>
         </div>
 
-        <div class="group result" v-if="stringToShow != ''">
-          <el-input
-            type="textarea"
-            :rows="6"
-            v-model="stringToShow">
-          </el-input>
-        </div>
+        <transition name="el-zoom-in-center">
+          <div class="group result" v-show="stringToShow != ''">
+            <el-input
+              type="textarea"
+              :rows="6"
+              v-model="stringToShow">
+            </el-input>
+          </div>
+        </transition>
     </div>
 </template>
 
