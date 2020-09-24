@@ -66,7 +66,7 @@ export default {
         private: this.privateKey
       })
       .then(response => {
-        this.decrypted = response.data.decrypted
+        this.decrypted = response.data.data
       })
       .catch(e => {
         this.errors.push(e)

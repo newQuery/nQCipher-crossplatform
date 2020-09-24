@@ -24,7 +24,7 @@ function createWindow() {
     backgroundColor: '#FFF',
     webPreferences: {
         nodeIntegration: true,
-        devTools: false
+        devTools: true
     }
 });
  

@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
-var cors = require('cors')
-const port = 3000
+const cors = require('cors')
 const openpgp = require('openpgp');
-var corsOptions = {
+const PGPEncodeDecodeHelper = require('../server/pgp-encode-decode-helper')
+const port = 3000
+
+const corsOptions = {
     origin: 'http://localhost:8080'
 }
 
@@ -11,59 +13,28 @@ app.use(cors(corsOptions))
 app.use(express.json()); 
 
 app.post('/generate', async function (req, res) {
-    
-    let { privateKeyArmored, publicKeyArmored } = await openpgp.generateKey({
-        userIds: [{ name: req.body.name, email: req.body.email }],
-        passphrase: req.body.email,
-        numBits: req.body.size
-    });
+    const cryptoHelper = new PGPEncodeDecodeHelper
 
-    const result = { private: privateKeyArmored, public: publicKeyArmored };
+    const result = await cryptoHelper.generate(req.body.email, req.body.name, req.body.passphrase, req.body.size)
 
-    res.json({
-        'result': result
-    })
+    res.json(result)
 });
 
 
 app.post('/encrypt', async function (req, res) {
-    
-    let encrypted = await openpgp.encrypt({
-        message: openpgp.message.fromText(req.body.message),
-        publicKeys: (await openpgp.key.readArmored(req.body.public)).keys
-    });
+    const cryptoHelper = new PGPEncodeDecodeHelper
 
-    res.json({
-        'encrypted': encrypted.data
-    })
+    const result = await cryptoHelper.encrypt(req.body.public, req.body.message)
+    
+    res.json(result)
 });
 
 app.post('/decrypt', async function (req, res) {
-    const encryptDecryptFunction = async() => {
+    const cryptoHelper = new PGPEncodeDecodeHelper
 
-        const privKeyObj = (await openpgp.key.readArmored(req.body.private)).keys[0]
-        await privKeyObj.decrypt(req.body.passphrase)
-        
-        const options = {
-            message: await openpgp.message.readArmored(req.body.public),    // parse armored message
-            privateKeys: [privKeyObj]                                 // for decryption
-        }
-                
-        const result = openpgp.decrypt(options).then(plaintext => {
-            return plaintext.data
-        }).catch(err => {
-            console.log(err);
-        })
+    const result = await cryptoHelper.decrypt(req.body.private, req.body.passphrase, req.body.public)
 
-
-        return result
-    }
-
-    const decrypted = await encryptDecryptFunction()
-
-    res.json({
-        'decrypted': decrypted
-    })
+    res.json(result)
 });
 
 app.listen(port, () => {

@@ -24,15 +24,17 @@
           <el-button @click="encryptPgp()" type="primary">Encrypt</el-button>
         </div>
 
-        <div class="group" v-if="encryptedMessage != ''">
-          <label>Encrypted message</label>
-          <el-input
-            type="textarea"
-            placeholder="Encrypted message"
-            :rows="6"
-            v-model="encryptedMessage">
-          </el-input>
-        </div>
+        <transition name="el-zoom-in-center">
+          <div class="group" v-if="encryptedMessage != ''">
+            <label>Encrypted message</label>
+            <el-input
+              type="textarea"
+              placeholder="Encrypted message"
+              :rows="6"
+              v-model="encryptedMessage">
+            </el-input>
+          </div>
+        </transition>
     </div>
 </template>
 
@@ -57,7 +59,8 @@ export default {
         message: this.messageToEncrypt
       })
       .then(response => {
-        this.encryptedMessage = response.data.encrypted
+        console.log(response)
+        this.encryptedMessage = response.data.data
       })
       .catch(e => {
         this.errors.push(e)
