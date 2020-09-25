@@ -34,3 +34,9 @@ npm run electron:build
 ```
 node server/main.js
 ```
+
+### Contribute
+
+If you want to contribute, create a branch from `develop` and create a new pull request.
+
+Everything needs to be unit or e2e tested before merging into develop.
